@@ -23,7 +23,7 @@ public class Main {
         while (running) {
             System.out.println("\n--- FŐMENÜ (Aktuális játékos: " + playerName + ") ---");
             System.out.println("1. Játékos név megadása");
-            System.out.println("2. Pálya betöltése fájlból (pl. level1.txt)");
+            System.out.println("2. Pálya betöltése fájlból");
             System.out.println("3. Játék indítása (GUI)");
             System.out.println("4. Toplista megtekintése (Rendezve)");
             System.out.println("5. Kilépés");
