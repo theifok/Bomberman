@@ -1,0 +1,11 @@
+# Maven build kimenet
+target/
+
+# IntelliJ IDEA fájlok
+.idea/
+*.iml
+
+# Operációs rendszer és helyi adatfájlok
+.DS_Store
+Thumbs.db
+scores.txt
