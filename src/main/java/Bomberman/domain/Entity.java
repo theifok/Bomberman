@@ -38,9 +38,4 @@ public abstract class Entity {
 
     public void kill() { this.alive = false; }
     public boolean isAlive() { return alive; }
-    public float getX() { return x; }
-    public float getY() { return y; }
-    public int getWidth() { return width; }
-    public int getHeight() { return height; }
-    public float getSpeed() { return speed; }
 }

@@ -51,8 +51,8 @@ public class GamePanel extends JPanel implements ActionListener {
     private void initEntities() {
         player = new Player(playerName, TILE_SIZE + 4, TILE_SIZE + 4, this);
         npcs = new ArrayList<>();
-        npcs.add(new NPC(19 * TILE_SIZE + 4, 1 * TILE_SIZE + 4));
-        npcs.add(new NPC(1 * TILE_SIZE + 4, 13 * TILE_SIZE + 4));
+        npcs.add(new NPC(19 * TILE_SIZE + 4, TILE_SIZE + 4));
+        npcs.add(new NPC(TILE_SIZE + 4, 13 * TILE_SIZE + 4));
         npcs.add(new NPC(19 * TILE_SIZE + 4, 13 * TILE_SIZE + 4));
 
         bombs = new ArrayList<>();
