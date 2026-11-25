@@ -21,6 +21,11 @@ public abstract class Entity {
         this.speed = speed;
     }
 
+    public float getX() { return x; }
+    public float getY() { return y; }
+    public int getWidth() { return width; }
+    public int getHeight() { return height; }
+
     public abstract void update(GamePanel game);
     public abstract void draw(Graphics g);
 

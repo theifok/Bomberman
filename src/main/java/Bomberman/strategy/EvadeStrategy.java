@@ -6,6 +6,7 @@ import Bomberman.domain.NPC;
 import Bomberman.domain.Player;
 import java.awt.Color;
 import java.util.List;
+import Bomberman.ui.GamePanel;
 
 public class EvadeStrategy implements MovementStrategy {
     @Override
@@ -20,7 +21,7 @@ public class EvadeStrategy implements MovementStrategy {
         int bestDirY = 0;
         double maxSafetyScore = -999;
 
-        Bomb nearestBomb = bombs.isEmpty() ? null : bombs.get(0);
+        Bomb nearestBomb = findNearestBomb(myTileX, myTileY, bombs);
 
         for (int i = 0; i < 4; i++) {
             int targetX = myTileX + dx[i];
@@ -34,6 +35,11 @@ public class EvadeStrategy implements MovementStrategy {
                     score += Math.hypot(targetX - nearestBomb.getX(), targetY - nearestBomb.getY()) * 10;
                 }
 
+                // Kisebb bónusz a jelenlegi haladási irány megtartására, hogy ne rángatózzon két mező között
+                if (dx[i] == npc.getDirX() && dy[i] == npc.getDirY()) {
+                    score += 5;
+                }
+
                 if (score > maxSafetyScore) {
                     maxSafetyScore = score;
                     bestDirX = dx[i];
@@ -43,10 +49,41 @@ public class EvadeStrategy implements MovementStrategy {
         }
 
         if (bestDirX != 0 || bestDirY != 0) {
-            npc.setDirection(bestDirX, bestDirY);
+            float centerX = myTileX * GamePanel.TILE_SIZE + (GamePanel.TILE_SIZE - npc.getWidth()) / 2.0f;
+            float centerY = myTileY * GamePanel.TILE_SIZE + (GamePanel.TILE_SIZE - npc.getHeight()) / 2.0f;
+
+            if (bestDirY != 0 && Math.abs(npc.getX() - centerX) > 4.0f) {
+                npc.setDirection(npc.getX() < centerX ? 1 : -1, 0);
+                npc.alignToTileCenterY();
+            }
+            else if (bestDirX != 0 && Math.abs(npc.getY() - centerY) > 4.0f) {
+                npc.setDirection(0, npc.getY() < centerY ? 1 : -1);
+                npc.alignToTileCenterX();
+            }
+            else {
+                npc.setDirection(bestDirX, bestDirY);
+                if (bestDirX != 0) {
+                    npc.alignToTileCenterY();
+                } else {
+                    npc.alignToTileCenterX();
+                }
+            }
         } else {
             npc.setDirection(-npc.getDirX(), -npc.getDirY());
         }
+    }
+
+    private Bomb findNearestBomb(int tileX, int tileY, List<Bomb> bombs) {
+        Bomb nearest = null;
+        double minDist = Double.MAX_VALUE;
+        for (Bomb b : bombs) {
+            double d = Math.hypot(tileX - b.getX(), tileY - b.getY());
+            if (d < minDist) {
+                minDist = d;
+                nearest = b;
+            }
+        }
+        return nearest;
     }
 
     @Override

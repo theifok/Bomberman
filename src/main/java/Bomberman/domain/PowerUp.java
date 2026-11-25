@@ -7,7 +7,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public class PowerUp {
-    public enum Type { SPEED, BOMB_UP, FIRE_UP }
+    public enum Type { SPEED, BOMB_UP, RADIUS_UP }
 
     private final int tileX, tileY;
     private final Type type;
@@ -27,7 +27,7 @@ public class PowerUp {
         switch (type) {
             case SPEED -> g.setColor(Color.YELLOW);
             case BOMB_UP -> g.setColor(Color.RED);
-            case FIRE_UP -> g.setColor(Color.ORANGE);
+            case RADIUS_UP -> g.setColor(Color.ORANGE);
         }
 
         g.fillOval(px + 10, py + 10, 20, 20);
@@ -36,7 +36,7 @@ public class PowerUp {
         String letter = switch (type) {
             case SPEED -> "S";
             case BOMB_UP -> "B";
-            case FIRE_UP -> "F";
+            case RADIUS_UP -> "R";
         };
         g.drawString(letter, px + 17, py + 25);
     }

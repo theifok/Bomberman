@@ -58,7 +58,7 @@ public class Map {
                 if (ch == '1') grid[r][c] = INDESTRUCTIBLE;
                 else if (ch == '2') grid[r][c] = DESTRUCTIBLE;
                 else if (ch == '0') grid[r][c] = EMPTY;
-                else throw new InvalidMapFormatException("Érvénytelen karakter a pályán: '" + ch + "'");
+                else throw new InvalidMapFormatException("Érvénytelen karakter: '" + ch + "'");
             }
         }
     }
@@ -160,7 +160,7 @@ public class Map {
     private void spawnPowerUp(int tileX, int tileY, List<PowerUp> powerUps) {
         int chance = random.nextInt(100);
         if (chance < 25) powerUps.add(new PowerUp(tileX, tileY, PowerUp.Type.BOMB_UP));
-        else if (chance < 50) powerUps.add(new PowerUp(tileX, tileY, PowerUp.Type.FIRE_UP));
+        else if (chance < 50) powerUps.add(new PowerUp(tileX, tileY, PowerUp.Type.RADIUS_UP));
         else if (chance < 60) powerUps.add(new PowerUp(tileX, tileY, PowerUp.Type.SPEED));
     }
 

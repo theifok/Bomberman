@@ -89,7 +89,7 @@ public class Player extends Entity {
         switch (type) {
             case SPEED -> this.speed += 0.5f;
             case BOMB_UP -> this.maxBombs++;
-            case FIRE_UP -> this.bombRadius++;
+            case RADIUS_UP -> this.bombRadius++;
         }
     }
 

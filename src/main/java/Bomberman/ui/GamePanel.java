@@ -184,7 +184,7 @@ public class GamePanel extends JPanel implements ActionListener {
         g.setColor(Color.CYAN);
         g.drawString("BOMBS: " + (player.getMaxBombs() - activeBombs) + "/" + player.getMaxBombs(), 280, 25);
         g.setColor(Color.ORANGE);
-        g.drawString("FIRE: " + player.getBombRadius(), 450, 25);
+        g.drawString("RADIUS: " + player.getBombRadius(), 450, 25);
         g.setColor(Color.YELLOW);
         g.drawString("SCORE: " + player.getScore(), 620, 25);
     }

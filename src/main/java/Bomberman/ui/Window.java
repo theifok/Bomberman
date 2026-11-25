@@ -8,8 +8,8 @@ public class Window extends JFrame {
     private final GamePanel gamePanel;
 
     public Window(String playerName, Map map, ScoreManager scoreManager) {
-        setTitle("Bomberman OOP - " + playerName);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Nem zárja be a konzolt kilépéskor
+        setTitle("Bomberman - " + playerName);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         gamePanel = new GamePanel(playerName, map, scoreManager);
