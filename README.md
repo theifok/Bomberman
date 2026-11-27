@@ -4,8 +4,8 @@ Indítás
 A projekt főmappájából futtasd a következő parancsot:
 mvn clean compile exec:java
 
-A megjelenő konzolos menüben megadhatod a neved (1), betölthetsz egyedi pályát pl. level2.txt (2), 
-elindíthatod a játékot (3), vagy megnézheted a toplistát (4).
+A megjelenő konzolos menüben megadhatod a neved, betölthetsz egyedi pályát pl. res/map1.txt, 
+elindíthatod a játékot, vagy megnézheted a toplistát.
 
 Mozgás: W, A, S, D
 Bomba lerakása: SPACE
